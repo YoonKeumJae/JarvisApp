@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jarvis.ConsoleApp", "Jarvis.ConsoleApp\Jarvis.ConsoleApp.csproj", "{997A9938-F80E-868F-DAA3-3D4C81A68D9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{997A9938-F80E-868F-DAA3-3D4C81A68D9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{997A9938-F80E-868F-DAA3-3D4C81A68D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{997A9938-F80E-868F-DAA3-3D4C81A68D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{997A9938-F80E-868F-DAA3-3D4C81A68D9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1BEE7F9-3BF2-4F95-A501-EE8435D32403}
+	EndGlobalSection
+EndGlobal
