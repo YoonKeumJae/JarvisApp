@@ -1,0 +1,22 @@
+{
+  "mcp": {
+    "servers": {
+      "obsidian": {
+        "command": "npx",
+        "args": ["-y", "mcp-obsidian", "/Users/yoonkeumjae/dev/obsidian"]
+      },
+      "filesystem": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "/Users/yoonkeumjae/Desktop"
+        ]
+      },
+      "puppeteer": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+      }
+    }
+  }
+}

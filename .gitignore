@@ -2,5 +2,7 @@ Jarvis/Jarvis.ConsoleApp/bin/*
 Jarvis/Jarvis.ConsoleApp/obj/*
 Jarvis/Jarvis.Core/bin/*
 Jarvis/Jarvis.Core/obj/*
+Jarvis/Jarvis.WebApi/bin/*
+Jarvis/Jarvis.WebApi/obj/*
 .env
 .DS_Store

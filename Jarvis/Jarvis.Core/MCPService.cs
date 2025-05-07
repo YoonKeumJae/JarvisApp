@@ -110,4 +110,23 @@ public class MCPService(Kernel _kernel)
         }
 
     }
+
+    public async Task<string> GetChatResponseAsync(string userMessage, Microsoft.SemanticKernel.ChatCompletion.ChatHistory history)
+    {
+        var kernel = _kernel;
+        var settings = new PromptExecutionSettings()
+        {
+            FunctionChoiceBehavior = FunctionChoiceBehavior.Auto()
+        };
+        history.AddUserMessage(userMessage);
+        var service = kernel.GetRequiredService<IChatCompletionService>();
+        var response = service.GetStreamingChatMessageContentsAsync(history, settings, kernel);
+        string message = string.Empty;
+        await foreach (var content in response)
+        {
+            message += content;
+        }
+        history.AddAssistantMessage(message);
+        return message;
+    }
 } 
