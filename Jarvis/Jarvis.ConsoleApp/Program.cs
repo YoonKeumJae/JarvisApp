@@ -1,7 +1,7 @@
-﻿using Microsoft.SemanticKernel;
-using DotNetEnv;
+﻿using DotNetEnv;
+using Microsoft.SemanticKernel;
 
-using Jarvis.MCP;
+using Jarvis.Core;
 
 string envPath = Path.Combine(Directory.GetCurrentDirectory(), ".env");
 Env.Load(envPath);

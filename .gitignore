@@ -1,4 +1,6 @@
 Jarvis/Jarvis.ConsoleApp/bin/*
 Jarvis/Jarvis.ConsoleApp/obj/*
+Jarvis/Jarvis.Core/bin/*
+Jarvis/Jarvis.Core/obj/*
 .env
 .DS_Store

@@ -1,10 +1,12 @@
 using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.ChatCompletion;
+
 using ModelContextProtocol.Client;
 using ModelContextProtocol.Protocol.Transport;
-using Microsoft.SemanticKernel.ChatCompletion;
+
 using System.Text.Json.Nodes;
 
-namespace Jarvis.MCP;
+namespace Jarvis.Core;
 
 public class MCPService(Kernel _kernel)
 {
@@ -108,4 +110,4 @@ public class MCPService(Kernel _kernel)
         }
 
     }
-}
+} 
