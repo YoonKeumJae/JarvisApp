@@ -12,8 +12,18 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 
 builder.Services.AddOpenApi();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+    );
+});
 
 var app = builder.Build();
+
+app.UseCors();
 
 if (app.Environment.IsDevelopment())
 {
@@ -22,12 +32,6 @@ if (app.Environment.IsDevelopment())
 
 app.MapGet("/health", () => Results.Ok("Healthy")).WithName("HealthCheck");
 
-// ===== 세션 및 대화 관리 구조 =====
-// record ChatSession(string SessionId, ChatHistory History);
-// class SessionManager { ... }
-// record ChatRequest(string SessionId, string Message);
-
-// ===== MCPService 초기화 (싱글턴) =====
 MCPService? mcpService = null;
 object mcpLock = new();
 
@@ -59,14 +63,12 @@ async Task<MCPService> GetMcpServiceAsync()
     }
 }
 
-// ===== 세션 생성 =====
 app.MapPost("/session", () =>
 {
     var session = SessionManager.CreateSession();
     return Results.Ok(new { sessionId = session.SessionId });
 });
 
-// ===== 채팅 =====
 app.MapPost("/chat", async (ChatRequest req) =>
 {
     if (string.IsNullOrWhiteSpace(req.SessionId) || string.IsNullOrWhiteSpace(req.Message))
@@ -79,7 +81,6 @@ app.MapPost("/chat", async (ChatRequest req) =>
     return Results.Ok(new { response = message });
 });
 
-// ===== 세션 종료 =====
 app.MapDelete("/session/{sessionId}", (string sessionId) =>
 {
     var ok = SessionManager.DeleteSession(sessionId);
@@ -89,7 +90,6 @@ app.MapDelete("/session/{sessionId}", (string sessionId) =>
 
 app.Run();
 
-// ===== record/class 선언부 (Top-level statements 이후) =====
 record ChatSession(string SessionId, Microsoft.SemanticKernel.ChatCompletion.ChatHistory History);
 
 class SessionManager

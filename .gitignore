@@ -4,5 +4,7 @@ Jarvis/Jarvis.Core/bin/*
 Jarvis/Jarvis.Core/obj/*
 Jarvis/Jarvis.WebApi/bin/*
 Jarvis/Jarvis.WebApi/obj/*
+Jarvis/Jarvis.Client/bin/*
+Jarvis/Jarvis.Client/obj/*
 .env
 .DS_Store

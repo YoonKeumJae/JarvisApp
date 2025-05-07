@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Rendering
+<Router AppAssembly="typeof(Program).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="routeData" />
+    </Found>
+    <NotFound>
+        <RedirectToRoot />
+    </NotFound>
+</Router>
+
+@code {
+    public class RedirectToRoot : ComponentBase
+    {
+        [Inject] NavigationManager Nav { get; set; } = default!;
+        protected override void OnInitialized()
+        {
+            Nav.NavigateTo("/");
+        }
+        protected override void BuildRenderTree(RenderTreeBuilder builder) { }
+    }
+}
