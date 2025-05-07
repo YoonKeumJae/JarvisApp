@@ -1,8 +1,22 @@
 {
-  "mcpServers": {
-    "time": {
-      "command": "docker",
-      "args": ["run", "-i", "--rm", "mcp/time"]
+  "mcp": {
+    "servers": {
+      "obsidian": {
+        "command": "npx",
+        "args": ["-y", "mcp-obsidian", "/Users/yoonkeumjae/dev/obsidian"]
+      },
+      "filesystem": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "/Users/yoonkeumjae/Desktop"
+        ]
+      },
+      "puppeteer": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+      }
     }
   }
 }

@@ -14,10 +14,15 @@ public class MCPService(Kernel _kernel)
         var jsonPath = Path.Combine(Directory.GetCurrentDirectory(), "mcp.json");
         var json = await File.ReadAllTextAsync(jsonPath);
         var root = JsonNode.Parse(json);
-        var servers = root?["mcpServers"]?.AsObject();
+        var mcp = root?["mcp"]?.AsObject();
 
+        if (mcp == null)
+            throw new InvalidOperationException("mcp not found in mcp.json");
+
+        // 서버 등록
+        var servers = mcp["servers"]?.AsObject();
         if (servers == null)
-            throw new InvalidOperationException("mcpServers not found in mcp.json");
+            throw new InvalidOperationException("servers not found in mcp.json");
 
         foreach (var (pluginName, server) in servers)
         {
@@ -33,7 +38,6 @@ public class MCPService(Kernel _kernel)
                 WorkingDirectory = Directory.GetCurrentDirectory()
             };
 
-            // 환경변수 처리 (필요시)
             if (env != null)
             {
                 transportOptions.EnvironmentVariables = env.ToDictionary(
