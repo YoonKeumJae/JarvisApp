@@ -8,14 +8,22 @@ using System.Text.Json.Nodes;
 
 namespace Jarvis.Core;
 
-public class MCPService(Kernel _kernel)
+public class MCPService
 {
+    private readonly Kernel _kernel;
+    private readonly string _rootDir;
+    public MCPService(Kernel kernel, string rootDir)
+    {
+        _kernel = kernel;
+        _rootDir = rootDir;
+    }
+
     public async Task RegisterMcpToolsAsync()
     {
         Kernel kernel = _kernel;
-        var jsonPath = Path.Combine(Directory.GetCurrentDirectory(), "mcp.json");
+        var jsonPath = Path.Combine(_rootDir, "mcp.json");
         var json = await File.ReadAllTextAsync(jsonPath);
-        var root = JsonNode.Parse(json);
+        var root = System.Text.Json.Nodes.JsonNode.Parse(json);
         var mcp = root?["mcp"]?.AsObject();
 
         if (mcp == null)

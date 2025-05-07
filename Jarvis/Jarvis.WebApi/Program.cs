@@ -41,7 +41,8 @@ async Task<MCPService> GetMcpServiceAsync()
     lock (mcpLock)
     {
         if (mcpService != null) return mcpService;
-        string envPath = Path.Combine(Directory.GetCurrentDirectory(), ".env");
+        var rootDir = Directory.GetParent(Directory.GetCurrentDirectory())?.FullName ?? Directory.GetCurrentDirectory();
+        string envPath = Path.Combine(rootDir, ".env");
         if (File.Exists(envPath))
             Env.Load(envPath);
         var token = Environment.GetEnvironmentVariable("AZURE_OPENAI_TOKEN");
@@ -57,7 +58,7 @@ async Task<MCPService> GetMcpServiceAsync()
             endpoint: endpoint,
             apiKey: token);
         var kernel = kernelBuilder.Build();
-        mcpService = new MCPService(kernel);
+        mcpService = new MCPService(kernel, rootDir);
         mcpService.RegisterMcpToolsAsync().GetAwaiter().GetResult();
         return mcpService;
     }

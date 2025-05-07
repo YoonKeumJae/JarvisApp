@@ -26,8 +26,6 @@ body {
 }
 
 .bubble {
-  display: flex;
-  align-items: center;
   padding: 0.5rem 1rem;
   border-radius: 1.2rem;
   max-width: 80%;
@@ -70,7 +68,6 @@ body {
   background: #fff;
 }
 
-/* 마크다운 내 빨간색 강조(HTML 태그, 코드 등) */
 .bubble.bot [style*="color:red"],
 .bubble.bot font[color="red"] {
   color: #ff0000 !important;
@@ -80,7 +77,6 @@ body {
   border-radius: 0.3em;
 }
 
-/* 코드블록, 인라인코드 배경 밝게 */
 .bubble.bot pre,
 .bubble.bot code {
   background: #f8f9fa !important;
@@ -100,7 +96,6 @@ body {
   overflow-x: auto;
 }
 
-/* 마크다운 strong, em 강조 */
 .bubble.bot strong {
   color: #ff6969;
 }
@@ -108,7 +103,6 @@ body {
   color: #00796b;
 }
 
-/* 마크다운에서 파란색(예: <span style='color:blue'>, <font color='blue'>)이 더 밝게 보이도록 #1976d2로 오버라이드. 강조 효과를 위해 font-weight: bold도 추가. */
 .bubble.bot [style*="color:blue"],
 .bubble.bot font[color="blue"] {
   color: #1976d2 !important;
