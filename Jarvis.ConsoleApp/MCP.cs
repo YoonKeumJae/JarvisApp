@@ -19,7 +19,6 @@ public class MCPService(Kernel _kernel)
         if (mcp == null)
             throw new InvalidOperationException("mcp not found in mcp.json");
 
-        // 서버 등록
         var servers = mcp["servers"]?.AsObject();
         if (servers == null)
             throw new InvalidOperationException("servers not found in mcp.json");
