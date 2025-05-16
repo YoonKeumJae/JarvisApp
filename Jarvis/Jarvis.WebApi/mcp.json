@@ -3,14 +3,14 @@
     "servers": {
       "obsidian": {
         "command": "npx",
-        "args": ["-y", "mcp-obsidian", "/Users/yoonkeumjae/dev/obsidian"]
+        "args": ["-y", "mcp-obsidian", "/Path/to/your/obsidian/vault"]
       },
       "filesystem": {
         "command": "npx",
         "args": [
           "-y",
           "@modelcontextprotocol/server-filesystem",
-          "/Users/yoonkeumjae/Desktop"
+          "/Path/to/your/filesystem/root"
         ]
       },
       "puppeteer": {
