@@ -21,6 +21,7 @@ builder.AddAzureOpenAIChatCompletion(
             apiKey: token);
 
 var kernel = builder.Build();
-var mcpService = new MCPService(kernel);
+var mcpJsonPath = Path.Combine(AppContext.BaseDirectory, "Jarvis.Core", "mcp.json");
+var mcpService = new MCPService(kernel, mcpJsonPath);
 await mcpService.RegisterMcpToolsAsync();
 await mcpService.InvokeMCPAsync();

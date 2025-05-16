@@ -58,7 +58,8 @@ async Task<MCPService> GetMcpServiceAsync()
             endpoint: endpoint,
             apiKey: token);
         var kernel = kernelBuilder.Build();
-        mcpService = new MCPService(kernel, rootDir);
+        var mcpJsonPath = Path.Combine(AppContext.BaseDirectory, "mcp.json");
+        mcpService = new MCPService(kernel, mcpJsonPath);
         mcpService.RegisterMcpToolsAsync().GetAwaiter().GetResult();
         return mcpService;
     }

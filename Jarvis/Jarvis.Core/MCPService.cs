@@ -11,18 +11,17 @@ namespace Jarvis.Core;
 public class MCPService
 {
     private readonly Kernel _kernel;
-    private readonly string _rootDir;
-    public MCPService(Kernel kernel, string rootDir)
+    private readonly string _mcpJsonPath;
+    public MCPService(Kernel kernel, string mcpJsonPath)
     {
         _kernel = kernel;
-        _rootDir = rootDir;
+        _mcpJsonPath = mcpJsonPath;
     }
 
     public async Task RegisterMcpToolsAsync()
     {
         Kernel kernel = _kernel;
-        var jsonPath = Path.Combine(_rootDir, "mcp.json");
-        var json = await File.ReadAllTextAsync(jsonPath);
+        var json = await File.ReadAllTextAsync(_mcpJsonPath);
         var root = System.Text.Json.Nodes.JsonNode.Parse(json);
         var mcp = root?["mcp"]?.AsObject();
 
