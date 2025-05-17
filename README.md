@@ -10,7 +10,7 @@
 
 2. **환경 변수 설정**
 
-   - 루트 또는 `Jarvis.WebApi` 폴더에 `.env` 파일을 생성하고 아래 항목을 추가하세요:
+   - `Jarvis` 폴더에 `.env` 파일을 생성하고 아래 항목을 추가하세요:
      ```env
      AZURE_OPENAI_TOKEN=your-azure-openai-api-key
      AZURE_OPENAI_ENDPOINT=your-azure-openai-endpoint
